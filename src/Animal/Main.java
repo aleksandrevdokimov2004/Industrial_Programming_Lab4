@@ -7,7 +7,7 @@ public class Main {
         puppy.jump();
         Animal doggy = new Dog("Стрелка");
         doggy.jump();
-        System.out.println("" + puppy.equals(puppy2));
+        System.out.printf(puppy.equals(puppy2)?"Щенки одинаковы":"Щенки разные" + "\n");
         puppy2.printName();
     }
 }
