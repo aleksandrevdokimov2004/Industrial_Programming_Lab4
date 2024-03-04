@@ -1,9 +1,17 @@
 package Transport;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
+
+    public static void print(ArrayList<Carriage> list){
+        for(Carriage each : list){
+            System.out.println(each);
+        }
+    }
+
     public static void main (String[] args){
         Scanner in = new Scanner(System.in);
         TrainGenerator trainGen = new TrainGenerator(10);
@@ -38,14 +46,14 @@ public class Main {
                         break;
                     }
                     System.out.printf("Пассажирские вагоны с %d-%d пассажирами\n", minPass, maxPass);
-                    TrainGenerator.print(trainGen.getCarriageWithPassengersBetween(minPass, maxPass));
+                    print(trainGen.getCarriageWithPassengersBetween(minPass, maxPass));
                     break;
                 case 3:
                     System.out.println("Вагоны, отсортированные по уровню комфорта");
-                    TrainGenerator.print(trainGen.getTrainsSortedByComfort());
+                    print(trainGen.getTrainsSortedByComfort());
                     break;
                 case 4:
-                    trainGen.printAll();
+                    print(trainGen.getTrain());
                     break;
                 default:
                     System.out.print("Выход из программы");

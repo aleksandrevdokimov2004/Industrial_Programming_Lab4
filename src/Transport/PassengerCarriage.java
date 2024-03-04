@@ -1,11 +1,11 @@
 package Transport;
 
 class PassengerCarriage extends Carriage{
-    private int comfortLevel;
+    private ComfortLevel comfortLevel;
     private int passengersCount;
     private int luggageCount;
 
-    public PassengerCarriage(int crewCount, int comfortLevel, int passengersCount, int luggageCount){
+    public PassengerCarriage(int crewCount, ComfortLevel comfortLevel , int passengersCount, int luggageCount){
         super(crewCount);
         this.comfortLevel=comfortLevel;
         this.passengersCount=passengersCount;
@@ -14,18 +14,18 @@ class PassengerCarriage extends Carriage{
 
     public PassengerCarriage(){
         super();
-        this.comfortLevel=0;
+        this.comfortLevel=ComfortLevel.LOW;
         this.passengersCount=0;
         this.luggageCount=0;
     }
 
     @Override
     public String toString(){
-        return String.format("Пассажирский вагон: экипаж %d\tУровень комфорта: %d\tПассажиры: %d\t" +
-                "Багаж: %d", crewCount, comfortLevel, passengersCount, luggageCount);
+        return String.format("Пассажирский вагон: экипаж %d\tУровень комфорта: %s\tПассажиры: %d\t" +
+                "Багаж: %d", crewCount, comfortLevel.toString(), passengersCount, luggageCount);
     }
 
-    public int getComfortLevel(){
+    public ComfortLevel getComfortLevel(){
         return comfortLevel;
     }
 
