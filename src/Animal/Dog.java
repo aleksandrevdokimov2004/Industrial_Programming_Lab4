@@ -29,6 +29,6 @@ public class Dog extends Animal{
 
     @Override
     public String toString(){
-        return name.isEmpty()?"Это собака":String.format("Это собака %s", name);
+        return String.format("Это собака %s", name);
     }
 }

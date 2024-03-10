@@ -1,15 +1,13 @@
 package Transport;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void print(ArrayList<Carriage> list){
-        for(Carriage each : list){
+    public static <T> void print(ArrayList<T> list){
+        for(T each : list)
             System.out.println(each);
-        }
     }
 
     public static void main (String[] args){

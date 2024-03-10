@@ -20,6 +20,7 @@ public abstract class Animal {
     public abstract void bite();
 
     public abstract String toString();
+
     public void printName(){
         System.out.printf("Имя: %s\n", name);
     }
