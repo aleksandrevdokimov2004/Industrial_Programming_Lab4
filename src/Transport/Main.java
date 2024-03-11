@@ -13,27 +13,30 @@ public class Main {
     public static void main (String[] args){
         Scanner in = new Scanner(System.in);
         TrainGenerator trainGen = new TrainGenerator(10);
-        boolean isWorking = true;
-        int code;
-        while(isWorking){
+
+        MenuItems menuCommand = MenuItems.PRINT_ALL_CARRIAGES;
+        String command;
+
+        while(menuCommand!=MenuItems.EXIT){
             System.out.print("""
                     Вывод информации о поезде:
-                    0 - код вывода количества всех пасажиров в поезде
-                    1 - код вывода количества всего багажа в поезде
-                    2 - код вывода вагонов с пассажирами в диапозоне
-                    3 - код вывода вагонов, отсортированных по уровню комфорта
-                    4 - код вывода всех вагонов
+                    PP - код вывода количества всех пасажиров в поезде
+                    PL - код вывода количества всего багажа в поезде
+                    PR - код вывода вагонов с пассажирами в диапозоне
+                    PS - код вывода вагонов, отсортированных по уровню комфорта
+                    PA - код вывода всех вагонов
                     другой код - код выхода
                     Код:""");
-            code = in.nextInt();
-            switch (code){
-                case 0:
+            command = in.nextLine().toUpperCase();
+            menuCommand = MenuItems.findItemFromString(command);
+            switch (menuCommand){
+                case PRINT_ALL_PASSENGERS:
                     System.out.printf("Всего пассажиров в поезде: %d\n", trainGen.getOverallPassengersCount());
                     break;
-                case 1:
+                case PRINT_ALL_LUGGAGE:
                     System.out.printf("Всего багажа в поезде: %d\n", trainGen.getOverallLuggageCount());
                     break;
-                case 2:
+                case PRINT_CARRIAGE_IN_RANGE:
                     System.out.println("Введите минимальное количество пассажиров");
                     int minPass = in.nextInt();
                     System.out.println("Введите максимальное количество пассажиров");
@@ -44,18 +47,21 @@ public class Main {
                         break;
                     }
                     System.out.printf("Пассажирские вагоны с %d-%d пассажирами\n", minPass, maxPass);
-                    print(trainGen.getCarriageWithPassengersBetween(minPass, maxPass));
+                    ArrayList<Carriage> carriagesWithPassengers =
+                            trainGen.getCarriageWithPassengersBetween(minPass, maxPass);
+                    print(carriagesWithPassengers);
+                    in.nextLine();
                     break;
-                case 3:
+                case PRINT_SORTED_BY_COMFORT:
                     System.out.println("Вагоны, отсортированные по уровню комфорта");
-                    print(trainGen.getTrainsSortedByComfort());
+                    ArrayList<Carriage> sorted = trainGen.getTrainsSortedByComfort();
+                    print(sorted);
                     break;
-                case 4:
+                case PRINT_ALL_CARRIAGES:
                     print(trainGen.getTrain());
                     break;
-                default:
+                case EXIT:
                     System.out.print("Выход из программы");
-                    isWorking=false;
                     break;
             }
         }

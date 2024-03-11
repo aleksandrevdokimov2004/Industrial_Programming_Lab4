@@ -1,32 +1,22 @@
 package Transport;
 
 public enum ComfortLevel {
-    LOW("Плацкарт", 0),
-    MEDIUM("СВ-вагон", 1),
-    HIGH("Купе", 2);
+    LOW("Плацкарт"),
+    MEDIUM("СВ-вагон"),
+    HIGH("Купе");
 
     private final String name;
-    private final int level;
 
-    ComfortLevel(String name, int level) {
+    ComfortLevel(String name) {
         this.name = name;
-        this.level=level;
     }
 
     public static ComfortLevel fromInteger(int x) {
-        return switch (x) {
-            case 0 -> LOW;
-            case 1 -> MEDIUM;
-            case 2 -> HIGH;
-            default -> null;
-        };
+        if(x>2 || x<0) return null;
+        return ComfortLevel.values()[x];
     }
 
     public String toString() {
         return this.name;
-    }
-
-    public int getComfortInt(){
-        return level;
     }
 }
