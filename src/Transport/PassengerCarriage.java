@@ -21,7 +21,7 @@ class PassengerCarriage extends Carriage{
 
     @Override
     public String toString(){
-        return String.format("Пассажирский вагон: экипаж %d\tУровень комфорта: %s\tПассажиры: %d\t" +
+        return String.format("Пассажирский вагон: экипаж %d\tУровень комфорта: %8s\tПассажиры: %d\t" +
                 "Багаж: %d", crewCount, comfortLevel.toString(), passengersCount, luggageCount);
     }
 
